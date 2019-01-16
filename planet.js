@@ -18,7 +18,9 @@ class Creation{
     var rotation = document.getElementById("angle1").value; // Getting the value of angle slider from HTML
     var Orbit = document.getElementById("orbit").value; // Getting the value of orbit slider from HTML
     var multiplier = document.getElementById("speed").value; // Getting the value of speed slider from HTML
-
+    document.getElementById("reset_plan").addEventListener("click", function Despawn(){
+      this.planets = [];
+    });
     background(233); // Setting the background to near white
     pointLight(250,250,250, locX, locY, 50); // Setting a point light in 3D space to follow the mouse
     ambientLight(50); // Adding an ambient light so it is visible
