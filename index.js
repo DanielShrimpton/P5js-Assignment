@@ -1,7 +1,7 @@
-var x
+var x;
 
 function setup(){
-  x = new Creation()
+  x = new Creation();
 }
 
 function draw(){
