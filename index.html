@@ -4,35 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planet</title>
-    <style> body {padding: 0; margin: 0;} </style>
+    <!-- <style> body {padding: 0; margin: 0;} </style> -->
     <script src="../p5.min.js"></script>
     <script src="../addons/p5.dom.min.js"></script>
     <script src="../addons/p5.sound.min.js"></script>
     <script src="index.js"></script>
     <script src="planet.js"></script>
   </head>
-  <form id="inputs">
-    <table style="width:100%">
-      <tbody>
-        <tr>
-          <th>Change rotation of planet</th>
-          <th>Red</th>
-          <th>Green</th>
-          <th>Blue</th>
-          <th>Size of orbit</th>
-          <th>Speed of orbit</th>
-        </tr>
-        <tr>
-          <td><center><input onchange="draw()" oninput="draw()" type="range" id="angle1" name="angle1" min="0" max="360" step=".001" value="25"></center></td>
-          <td><center><input onchange="draw()" oninput="draw()" type="range" id="red" name="red" min="0" max="255" step="0.001" value="0"></center></td>
-          <td><center><input onchange="draw()" oninput="draw()" type="range" id="green" name="green" min="0" max="255" step="0.001" value="255"></center></td>
-          <td><center><input onchange="draw()" oninput="draw()" type="range" id="blue" name="blue" min="0" max="255" step="0.001" value="255"></center></td>
-          <td><center><input onchange="draw()" oninput="draw()" type="range" id="orbit" name="orbit" min="220" max="700" step="0.01" value="440"></center></td>
-          <td><center><input onchange="draw()" oninput="draw()" type="range" id="speed" name="speed" min="0" max="5" step="0.001" value="1"></center></td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
   <body>
+    <form id="inputs">
+      <table style="width:100%">
+        <tbody>
+          <tr>
+            <th>Change rotation of planet</th>
+            <th>Red</th>
+            <th>Green</th>
+            <th>Blue</th>
+            <th>Size of orbit</th>
+            <th>Speed of orbit</th>
+          </tr>
+          <tr>
+            <td><center><input onchange="draw()" oninput="draw()" type="range" id="angle1" name="angle1" min="0" max="360" step=".001" value="25"></center></td>
+            <td><center><input onchange="draw()" oninput="draw()" type="range" id="red" name="red" min="0" max="255" step="0.001" value="0"></center></td>
+            <td><center><input onchange="draw()" oninput="draw()" type="range" id="green" name="green" min="0" max="255" step="0.001" value="255"></center></td>
+            <td><center><input onchange="draw()" oninput="draw()" type="range" id="blue" name="blue" min="0" max="255" step="0.001" value="255"></center></td>
+            <td><center><input onchange="draw()" oninput="draw()" type="range" id="orbit" name="orbit" min="220" max="700" step="0.01" value="440"></center></td>
+            <td><center><input onchange="draw()" oninput="draw()" type="range" id="speed" name="speed" min="0" max="5" step="0.001" value="1"></center></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
   </body>
 </html>

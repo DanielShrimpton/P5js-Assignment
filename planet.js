@@ -24,7 +24,7 @@ class Creation{
     ambientLight(50); // Adding an ambient light so it is visible
 
 
-    push(); // Only affects this shape inside the push pop,.
+    push(); // Only affects this shape inside the push pop
     specularMaterial(red,green,blue); // Creating a material that reflects light with the variables RGB
     sphere(100, 100, 100); //Creating the center sphere with radius 100 and detail in the x and y of 100
     translate(0,0,0); // Moving it into the center of the canvas
@@ -36,7 +36,7 @@ class Creation{
     {
       this.planets[i].s = this.planets[i].c * multiplier; //  and sets the speed of each planet to the constant x the multiplier
       this.planets[i].setCoords(millis(), Orbit); // and then calls setCoords to move it
-      this.planets[i].display(red,green,blue); // and then displays them with the colour 
+      this.planets[i].display(red,green,blue); // and then displays them with the colour
     }
     Ring(Orbit,red,green,blue);
 
