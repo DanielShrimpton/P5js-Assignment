@@ -38,44 +38,44 @@ class Creation{
       this.planets[i].setCoords(millis(), Orbit); // and then calls setCoords to move it
       this.planets[i].display(red,green,blue); // and then displays them with the colour
     }
-    Ring(Orbit,red,green,blue);
+    Ring(Orbit,red,green,blue); // This is calling the function below with the variables
 
-    function Ring(r,red,green,blue){
-      push();
-      specularMaterial(255-red,green,255-blue);
-      torus(r/2,5,100,100);
-      pop();
+    function Ring(r,red,green,blue){ // This function draws the orbital ring
+      push(); // This makes sure that it only effects what is inside the push, pop part
+      specularMaterial(255-red,green,255-blue); // Setting up the material of the torus to be different to the planet
+      torus(r/2,5,100,100); // Torus where the parameters are radius, thickness, detail-in-x and detail-in-y
+      pop(); // Ending the encapsulation of the previous 2 lines
     }
   }
 
-  spawn() {
-    var planet1 = new Planet();
-    planet1.s, planet1.c = random(0.0001, 0.004);
-    planet1.r = random(20, 70);
-    this.planets.push(planet1);
+  spawn() { // This function is called when an event happens in the index.js e.g. mousepressed, it spawns a new planet
+    var planet1 = new Planet(); // This is creating a new planet using the class Planet
+    planet1.s, planet1.c = random(0.0001, 0.004); // This is setting the speed and constant to a random number
+    planet1.r = random(20, 70); // Setting the radius to a random number in that range
+    this.planets.push(planet1); // Adding it to the list of planets
   }
 
 
-  despawn(){
-    this.planets = [];
+  despawn(){ // This function is called on an event in index.js e.g. keypressed. It removes all the orbiting planets
+    this.planets = []; // Making the list of planets empty again
   }
 
 }
 
-class Planet{
-  constructor(x,y,r,s) {
-    this.r = r/2;
+class Planet{ // This class is called to create a new orbiting planet
+  constructor(x,y,r,s) { // This is the constructor so what is done automatically
+    this.r = r/2; // This sets the radius value to be halved as it is given as a diameter
 
     }
-  setCoords(millis, rOrbit) {
-    this.x = sin(millis * this.s) * rOrbit/2;
-    this.y = cos(millis * this.s) * rOrbit/2;
+  setCoords(millis, rOrbit) { // This function is what is called for every planet on every draw call
+    this.x = sin(millis * this.s) * rOrbit/2; // Sets the x coordinates for the planet by using a sine function
+    this.y = cos(millis * this.s) * rOrbit/2; // Sets the y coordinates for the planet by using a cosine function
   }
-  display(red,green,blue) {
-    push();
-    specularMaterial(255-red,255-green,255-blue);
-    translate(this.x, this.y, 0);
-    sphere(this.r/3, 100, 100);
-    pop();
+  display(red,green,blue) { // This is the function that makes the planets appear in the new positions
+    push(); // Encapsualtes the next 3 lines so that they only effect this one object
+    specularMaterial(255-red,255-green,255-blue); // Setting a material that is different to other two whilst still using the sliders
+    translate(this.x, this.y, 0); // This moves the sphere in 3D space by using the previously calculated x and y coordinates
+    sphere(this.r/3, 100, 100); // Creates a sphere of radius this.r/3 so it is the right size on screen and of quality 100 in x and y.
+    pop(); // Ends the encapsulation of the previous 3 lines.
   }
 }
