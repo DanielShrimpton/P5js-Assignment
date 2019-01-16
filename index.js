@@ -1,11 +1,13 @@
 var x;
+var g;
 
 function setup(){
-  x = new Creation();
+  g = true;
+  x = new Creation(g);
 }
 
-function draw(){
-  x.draw();
+function draw(g){
+  x.draw(g);
 }
 
 function mousePressed(){
