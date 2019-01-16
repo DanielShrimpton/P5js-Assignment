@@ -1,12 +1,12 @@
 class Creation{
 
   constructor(){
-    this.planets = []; // This is a list of all the planets
+    Creation.planets = []; // This is a list of all the planets
     createCanvas(500, 500, WEBGL); // Creates a 3D canvase of size 500x500 using p5.rendererGL
     var planet1 = new Planet(); // Creating a first initial planet calling the class Planet
     planet1.s, planet1.c = 0.002; // Setting the speed and constant to 0.002
     planet1.r = 35; // Setting the radius to 35
-    this.planets.push(planet1); // Adding it to the list of planets
+    Creation.planets.push(planet1); // Adding it to the list of planets
   }
 
   draw() {
@@ -18,9 +18,7 @@ class Creation{
     var rotation = document.getElementById("angle1").value; // Getting the value of angle slider from HTML
     var Orbit = document.getElementById("orbit").value; // Getting the value of orbit slider from HTML
     var multiplier = document.getElementById("speed").value; // Getting the value of speed slider from HTML
-    document.getElementById("reset_plan").addEventListener("click", function Despawn(){
-      this.planets = [];
-    });
+    document.getElementById("reset_plan").addEventListener("click", this.despawn); // This is an eventlistener looking for the click of the button in the HTML to reset the planet list.
     background(233); // Setting the background to near white
     pointLight(250,250,250, locX, locY, 50); // Setting a point light in 3D space to follow the mouse
     ambientLight(50); // Adding an ambient light so it is visible
@@ -34,11 +32,11 @@ class Creation{
 
     camera(500*sin(PI*rotation/180),0,500*cos(PI*rotation/180),0,0,0,1,1,0); // This is taking the variable rotation and moving the camera around in 3D space depending on the value of the slider
 
-    for (var i = 0; i < this.planets.length; i++) // This for loop cycles through every item in planets
+    for (var i = 0; i < Creation.planets.length; i++) // This for loop cycles through every item in planets
     {
-      this.planets[i].s = this.planets[i].c * multiplier; //  and sets the speed of each planet to the constant x the multiplier
-      this.planets[i].setCoords(millis(), Orbit); // and then calls setCoords to move it
-      this.planets[i].display(red,green,blue); // and then displays them with the colour
+      Creation.planets[i].s = Creation.planets[i].c * multiplier; //  and sets the speed of each planet to the constant x the multiplier
+      Creation.planets[i].setCoords(millis(), Orbit); // and then calls setCoords to move it
+      Creation.planets[i].display(red,green,blue); // and then displays them with the colour
     }
     Ring(Orbit,red,green,blue); // This is calling the function below with the variables
 
@@ -54,12 +52,12 @@ class Creation{
     var planet1 = new Planet(); // This is creating a new planet using the class Planet
     planet1.s, planet1.c = random(0.0001, 0.004); // This is setting the speed and constant to a random number
     planet1.r = random(20, 70); // Setting the radius to a random number in that range
-    this.planets.push(planet1); // Adding it to the list of planets
+    Creation.planets.push(planet1); // Adding it to the list of planets
   }
 
 
   despawn(){ // This function is called on an event in index.js e.g. keypressed. It removes all the orbiting planets
-    this.planets = []; // Making the list of planets empty again
+    Creation.planets = []; // Making the list of planets empty again
   }
 
 }
