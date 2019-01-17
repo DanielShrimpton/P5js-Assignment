@@ -32,7 +32,7 @@ class Creation{
       ambientLight(50); // Adding an ambient light so it is visible
     }
     else{
-      background(233);
+      background(0);
       Creation.renderer.background(233);
       Creation.renderer.pointLight(250,250,250,locX,locY,50);
       Creation.renderer.ambientLight(50);
