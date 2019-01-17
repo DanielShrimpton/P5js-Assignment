@@ -27,3 +27,20 @@ if (Creation.check == 1 & Creation.USE_P5 == true){
 which is used to check if `Creation.check` is equal to `1` and the variable `Creation.USE_P5` is `true`. If they both are then it will make a variable `Creation.renderer` to `createGraphics` with parameters `500,500,WEBGL` which are the same dimensions as the canvas as it will be used to project onto a `p5.renderer` object instead of straight onto the canvas. It will also set `Creation.check` to 0 so that it won't continuously create `WEBGL` objects and crash the webpage. If this check doesn't pass then it will do an `else if` statement to see if `Creation.USE_P5` is `false` and if it is then it will make `Creation.renderer` be an `undefined` which is used in checks later in the component. It also resets `Creation.check` to 1 so that it can return to the `p5.renderer`.
 
 The next part of the module is defining various variables and fetching values from interactive sliders and checkboxes that are in the HTML file.
+```javascript
+Creation.USE_P5 = document.getElementById("use_p5").checked;
+var locX = mouseX - width/2;
+var locY = mouseY - height/2;
+var red = document.getElementById("red").value;
+var green = document.getElementById("green").value;
+var blue = document.getElementById("blue").value;
+var rotation = document.getElementById("angle1").value;
+var Orbit = document.getElementById("orbit").value;
+var multiplier = document.getElementById("speed").value;
+document.getElementById("reset_plan").addEventListener("click", this.despawn);
+```
+Going through this line by line, `Creation.USE_P5` is being set to the value of the checkbox in the HTML file with the ID of `use_p5` which is an ID used to identify the input required for this. This is using a `getElementById` which is a getter to retrieve the value being sent by the `document`'s interactive element.
+
+The variables `locX` and `locY` are set by using the `mouseX` and `mouseY` features of `p5.js` respectively. They then take away the width/height divided by 2 so that they are where the mouse is on screen. This means that these values can then be used to make an object follow the mouse on the canvas.
+
+The variables `red`, `green` and `blue` also uses the `document.getElementById` to retrieve the values from three different sliders with the ID the same as the name as the variable. 
