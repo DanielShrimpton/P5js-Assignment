@@ -24,4 +24,6 @@ if (Creation.check == 1 & Creation.USE_P5 == true){
     Creation.check = 1;
   }
 ```
-which is used to check if `Creation.check` is equal to `1` and the variable `USE_P5` is true. If they both are then it will make a variable `renderer` to `createGraphics` with parameters `500,500,WEBGL` which are the same dimensions as the canvas as it will be used to project onto a `p5.renderer` object instead of straight onto the canvas. It will also set `check` to 0 so that it won't continuously create `WEBGL` objects and crash the webpage.
+which is used to check if `Creation.check` is equal to `1` and the variable `Creation.USE_P5` is `true`. If they both are then it will make a variable `Creation.renderer` to `createGraphics` with parameters `500,500,WEBGL` which are the same dimensions as the canvas as it will be used to project onto a `p5.renderer` object instead of straight onto the canvas. It will also set `Creation.check` to 0 so that it won't continuously create `WEBGL` objects and crash the webpage. If this check doesn't pass then it will do an `else if` statement to see if `Creation.USE_P5` is `false` and if it is then it will make `Creation.renderer` be an `undefined` which is used in checks later in the component. It also resets `Creation.check` to 1 so that it can return to the `p5.renderer`.
+
+The next part of the module is defining various variables and fetching values from interactive sliders and checkboxes that are in the HTML file.
