@@ -33,13 +33,13 @@ class Creation{
     document.getElementById("reset_plan").addEventListener("click", this.despawn); // This is an eventlistener looking for the click of the button in the HTML to reset the planet list.
     if (Creation.renderer == undefined){
       background(233); // Setting the background to near white
-      pointLight(250,250,250, locX, locY, 50); // Setting a point light in 3D space to follow the mouse
+      pointLight(250,250,250, locX, locY, 600); // Setting a point light in 3D space to follow the mouse
       ambientLight(50); // Adding an ambient light so it is visible
     }
     else{
       background(0);
       Creation.renderer.background(233);
-      Creation.renderer.pointLight(250,250,250,locX,locY,50);
+      Creation.renderer.pointLight(250,250,250,locX,locY,600);
       Creation.renderer.ambientLight(50);
     }
 
