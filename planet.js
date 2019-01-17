@@ -1,24 +1,24 @@
 class Creation{
 
   constructor(renderer){
-    Creation.nummm = 1;
     Creation.USE_P5 = renderer;
+    Creation.check = 1;
     Creation.planets = []; // This is a list of all the planets
-    createCanvas(500, 500, WEBGL); // Creates a 3D canvase of size 500x500 using p5.rendererGL
     var planet1 = new Planet(); // Creating a first initial planet calling the class Planet
     planet1.s, planet1.c = 0.002; // Setting the speed and constant to 0.002
     planet1.r = 35; // Setting the radius to 35
     Creation.planets.push(planet1); // Adding it to the list of planets
+    createCanvas(500, 500, WEBGL); // Creates a 3D canvase of size 500x500 using p5.rendererGL
   }
 
   draw() {
-    if (Creation.nummm == 1 & Creation.USE_P5 == true){
+    if (Creation.check == 1 & Creation.USE_P5 == true){
       Creation.renderer = createGraphics(500,500, WEBGL);
-      Creation.nummm = 0
+      Creation.check = 0
     }
     else if (Creation.USE_P5 == false){
       Creation.renderer = undefined;
-      Creation.nummm = 1;
+      Creation.check = 1;
     }
     Creation.USE_P5 = document.getElementById("use_p5").checked;
     var locX = mouseX - width/2; // Creating a variable for the mouse X coordinates
