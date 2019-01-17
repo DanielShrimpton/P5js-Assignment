@@ -255,4 +255,51 @@ function keyPressed() {
 }
 ```
 
-This calls `x.despawn()` which is the function in the class `Creation` from `planet.js` which clears the list of planets, removing them all from being rendererd. 
+This calls `x.despawn()` which is the function in the class `Creation` from `planet.js` which clears the list of planets, removing them all from being rendererd.
+
+## index.html
+
+This is an example HTML page of how to include interaction between the webpage and the scripts. **IMPORTANT** For the webpage to be able to display anything, there must be a `p5.js` installation in the location `../LOCATION+OF+planet.js AND index.js AND index.html`. For this download `p5.js complete` from [the p5.js official website](https://p5js.org/download/) and then make a new folder next to `Addons` and put`planet.js`, `index.js` and `index.html` in that folder for it to work. (If you want you can change the location of the scripts in the html file to suit your environment).
+
+```HTML
+<script src="../p5.min.js"></script>
+<script src="../addons/p5.dom.min.js"></script>
+<script src="../addons/p5.sound.min.js"></script>
+<script src="index.js"></script>
+<script src="planet.js"></script>
+```
+
+This is the way the scripts are defined in the `<head>` tag in the example HTML file supplied.
+
+In the rest of the HTML file, there is a table with table headers describing what the interactive elements in the second row do. There are six sliders, one button and one checkbox.
+
+```html
+<form id="inputs">
+    <table style="width:100%">
+      <tbody>
+        <tr>
+          <th>Change rotation of planet</th>
+          <th>Red</th>
+          <th>Green</th>
+          <th>Blue</th>
+          <th>Size of orbit</th>
+          <th>Speed of orbit</th>
+          <th>Reset</th>
+          <th>Use P5 Renderer</th>
+        </tr>
+        <tr>
+          <td><center><input onchange="draw()" oninput="draw()" type="range" id="angle1" name="angle1" min="0" max="360" step=".001" value="25"></center></td>
+          <td><center><input onchange="draw()" oninput="draw()" type="range" id="red" name="red" min="0" max="255" step="0.001" value="0"></center></td>
+          <td><center><input onchange="draw()" oninput="draw()" type="range" id="green" name="green" min="0" max="255" step="0.001" value="255"></center></td>
+          <td><center><input onchange="draw()" oninput="draw()" type="range" id="blue" name="blue" min="0" max="255" step="0.001" value="255"></center></td>
+          <td><center><input onchange="draw()" oninput="draw()" type="range" id="orbit" name="orbit" min="220" max="700" step="0.01" value="440"></center></td>
+          <td><center><input onchange="draw()" oninput="draw()" type="range" id="speed" name="speed" min="0" max="5" step="0.001" value="1"></center></td>
+          <td><center><button type="button" id="reset_plan">Reset</button></center></td>
+          <td><center><input type="checkbox" id="use_p5"></center></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  ```
+
+  The sliders are created with an `input` tag with `type="range"`. The important part is the `id` becuase this is what the `.js` files will be looking for. This is how they interact with one another. There is also a default value given at the end with `value=`. The button is setup with the `<button>` tag, and has to have `type="button"` otherwise it won't work. Again the `id` is what the `.js` file will look for so it is important it is the same as any in the `.js` file. Same applies for the checkbox. 
