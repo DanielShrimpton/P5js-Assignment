@@ -12,7 +12,8 @@ class Creation{
     frameRate(60);
   }
 
-  draw() {
+  draw(renderer) {
+    Creation.USE_P5 = renderer || false;
     if (Creation.check == 1 & Creation.USE_P5 == true){
       Creation.renderer = createGraphics(500,500, WEBGL);
       Creation.check = 0
@@ -21,7 +22,6 @@ class Creation{
       Creation.renderer = undefined;
       Creation.check = 1;
     }
-    Creation.USE_P5 = document.getElementById("use_p5").checked;
     var locX = mouseX - width/2; // Creating a variable for the mouse X coordinates
     var locY = mouseY - height/2; // Creating a variable for the mouse Y coordinates
     var red = document.getElementById("red").value || 0; // Getting value of red slider from HTML
@@ -105,8 +105,6 @@ class Creation{
 }
 
 class Planet{ // This class is called to create a new orbiting planet
-  constructor(x,y,r,s) { // Constructor needed to use the variables this.x, this.y, this.r, this.s
-    }
   setCoords(millis, rOrbit) { // This function is what is called for every planet on every draw call
     this.x = sin(millis * this.s) * rOrbit/2; // Sets the x coordinates for the planet by using a sine function
     this.y = cos(millis * this.s) * rOrbit/2; // Sets the y coordinates for the planet by using a cosine function
@@ -116,7 +114,7 @@ class Planet{ // This class is called to create a new orbiting planet
     this.green = green || 255; // Declaring local var and assigning default if none passed
     this.blue = blue || 255; // Declaring local var and assigning default if none passed
     push(); // Start new drawing state
-    specularMaterial(255-red,255-green,255-blue); // Setting a material that is different to other two whilst still using the sliders
+    specularMaterial(255-this.red,255-this.green,255-this.blue); // Setting a material that is different to other two whilst still using the sliders
     translate(this.x, this.y, 0); // This moves the sphere in 3D space by using the previously calculated x and y coordinates
     if (Creation.renderer == undefined){
       sphere(this.r/3, 100, 100); // Creates a sphere of radius this.r/3 so it is the right size on screen and of detail 100 in x and y.

@@ -7,6 +7,7 @@ function setup(){
 }
 
 function draw(g){
+  g = document.getElementById("use_p5").checked;
   x.draw(g);
 }
 
