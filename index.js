@@ -2,7 +2,7 @@ var x;
 var g;
 
 function setup(){
-  g = true;
+  g = document.getElementById("use_p5").checked;
   x = new Creation(g);
 }
 

@@ -19,6 +19,7 @@
       <p>The slider for "size of orbit" changes the size of the orbital ring and how far out the little planets will orbit.</p>
       <p>The slider for "speed of orbit" is a multiplier value from zero to 5 which will multiply the value of the speed in the sin and cos calculation to adjust its apparent speed accordingly.</p>
       <p>Click to create a new planet and press any key to remove them all. The reset button also removes all planets.</p>
+      <p>The checkbox will make use of the optional p5.renderer and draw it onto a rotating cube.</p>
     </font>
     <form id="inputs">
       <table style="width:100%">
@@ -31,6 +32,7 @@
             <th>Size of orbit</th>
             <th>Speed of orbit</th>
             <th>Reset</th>
+            <th>Use P5 Renderer</th>
           </tr>
           <tr>
             <td><center><input onchange="draw()" oninput="draw()" type="range" id="angle1" name="angle1" min="0" max="360" step=".001" value="25"></center></td>
@@ -40,6 +42,7 @@
             <td><center><input onchange="draw()" oninput="draw()" type="range" id="orbit" name="orbit" min="220" max="700" step="0.01" value="440"></center></td>
             <td><center><input onchange="draw()" oninput="draw()" type="range" id="speed" name="speed" min="0" max="5" step="0.001" value="1"></center></td>
             <td><center><button type="button" id="reset_plan">Reset</button></center></td>
+            <td><center><input type="checkbox" id="use_p5"></center></td>
           </tr>
         </tbody>
       </table>

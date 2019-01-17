@@ -3,7 +3,6 @@ class Creation{
   constructor(renderer){
     Creation.nummm = 1;
     Creation.USE_P5 = renderer;
-    console.log(Creation.USE_P5);
     Creation.planets = []; // This is a list of all the planets
     createCanvas(500, 500, WEBGL); // Creates a 3D canvase of size 500x500 using p5.rendererGL
     var planet1 = new Planet(); // Creating a first initial planet calling the class Planet
@@ -17,6 +16,11 @@ class Creation{
       Creation.renderer = createGraphics(500,500, WEBGL);
       Creation.nummm = 0
     }
+    else if (Creation.USE_P5 == false){
+      Creation.renderer = undefined;
+      Creation.nummm = 1;
+    }
+    Creation.USE_P5 = document.getElementById("use_p5").checked;
     var locX = mouseX - width/2; // Creating a variable for the mouse X coordinates
     var locY = mouseY - height/2; // Creating a variable for the mouse Y coordinates
     var red = document.getElementById("red").value; // Getting value of red slider from HTML
