@@ -16,7 +16,7 @@ class Creation{
     Creation.USE_P5 = renderer || false;
     if (Creation.check == 1 & Creation.USE_P5 == true){
       Creation.renderer = createGraphics(500,500, WEBGL);
-      Creation.check = 0
+      Creation.check = 0;
     }
     else if (Creation.USE_P5 == false){
       Creation.renderer = undefined;
@@ -24,13 +24,13 @@ class Creation{
     }
     var locX = mouseX - width/2; // Creating a variable for the mouse X coordinates
     var locY = mouseY - height/2; // Creating a variable for the mouse Y coordinates
-    var red = document.getElementById("red").value || 0; // Getting value of red slider from HTML
-    var green = document.getElementById("green").value || 255; // Getting value of green slider from HTML
-    var blue = document.getElementById("blue").value || 0; // Getting value of blue slider from HTML
-    var rotation = document.getElementById("angle1").value || 25;// Getting the value of angle slider from HTML
-    var Orbit = document.getElementById("orbit").value || 440; // Getting the value of orbit slider from HTML
-    var multiplier = document.getElementById("speed").value || 1;// Getting the value of speed slider from HTML
-    document.getElementById("reset_plan").addEventListener("click", this.despawn); // This is an eventlistener looking for the click of the button in the HTML to reset the planet list.
+    var red = document.getElementById('red').value || 0; // Getting value of red slider from HTML
+    var green = document.getElementById('green').value || 255; // Getting value of green slider from HTML
+    var blue = document.getElementById('blue').value || 0; // Getting value of blue slider from HTML
+    var rotation = document.getElementById('angle1').value || 25;// Getting the value of angle slider from HTML
+    var Orbit = document.getElementById('orbit').value || 440; // Getting the value of orbit slider from HTML
+    var multiplier = document.getElementById('speed').value || 1;// Getting the value of speed slider from HTML
+    document.getElementById('reset_plan').addEventListener('click', this.despawn); // This is an eventlistener looking for the click of the button in the HTML to reset the planet list.
     if (Creation.renderer == undefined){
       background(233); // Setting the background to near white
       pointLight(250,250,250, locX, locY, 600); // Setting a point light in 3D space to follow the mouse
