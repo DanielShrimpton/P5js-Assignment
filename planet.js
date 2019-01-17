@@ -44,7 +44,7 @@ class Creation{
     }
 
 
-    push(); // Only affects this shape inside the push pop
+    push(); // Start new drawing state
     specularMaterial(red,green,blue); // Creating a material that reflects light with the variables RGB
     if (Creation.renderer == undefined){
       sphere(100, 100, 100); //Creating the center sphere with radius 100 and detail in the x and y of 100
@@ -53,7 +53,7 @@ class Creation{
       Creation.renderer.sphere(100,100,100);
     }
     translate(0,0,0); // Moving it into the center of the canvas
-    pop(); // Ending the encapsulation of the previous 3 lines
+    pop(); // Return to original drawing state
     if (Creation.renderer == undefined){
       camera(500*sin(PI*rotation/180),0,500*cos(PI*rotation/180),0,0,0,1,1,0); // This is taking the variable rotation and moving the camera around in 3D space depending on the value of the slider
     }
@@ -66,7 +66,7 @@ class Creation{
     Ring(Orbit,red,green,blue); // This is calling the function below with the variables
 
     function Ring(r,red,green,blue){ // This function draws the orbital ring
-      push(); // This makes sure that it only effects what is inside the push, pop part
+      push(); // Start new drawing state
       specularMaterial(255-red,green,255-blue); // Setting up the material of the torus to be different to the planet
       if (Creation.renderer == undefined){
         torus(r/2,5,100,100); // Torus where the parameters are radius, thickness, detail-in-x and detail-in-y
@@ -74,7 +74,7 @@ class Creation{
       else{
         Creation.renderer.torus(r/2,5,100,100);
       }
-      pop(); // Ending the encapsulation of the previous 2 lines
+      pop(); // Return to original drawing state
     }
     if (Creation.renderer){
       rotateX(frameCount * 0.01);
@@ -106,7 +106,7 @@ class Planet{ // This class is called to create a new orbiting planet
     this.y = cos(millis * this.s) * rOrbit/2; // Sets the y coordinates for the planet by using a cosine function
   }
   display(red,green,blue) { // This is the function that makes the planets appear in the new positions
-    push(); // Encapsualtes the next 3 lines so that they only effect this one object
+    push(); // Start new drawing state
     specularMaterial(255-red,255-green,255-blue); // Setting a material that is different to other two whilst still using the sliders
     translate(this.x, this.y, 0); // This moves the sphere in 3D space by using the previously calculated x and y coordinates
     if (Creation.renderer == undefined){
@@ -115,6 +115,6 @@ class Planet{ // This class is called to create a new orbiting planet
     else{
       Creation.renderer.sphere(this.r/3, 100, 100);
     }
-    pop(); // Ends the encapsulation of the previous 3 lines.
+    pop(); // Return to original drawing state
   }
 }
