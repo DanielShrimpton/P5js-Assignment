@@ -63,3 +63,28 @@ else{
 ```
 
 This is used to check if `Creation.renderer` is `undefined` and if it is then it will draw a `background` of colour `233` on a scale of `0-255`, where `0` is black and `255` is white. It then creates a `pointLight` with the RGB values of `250` and at the XY coordinates of the mouse and Z coordinate of `600`. This means that the point light will follow the mouse in 2D space on the 3D canvas and stay in the same Z plane. It then creates an `ambientLight` which is general light in the scene so things aren't in complete darkness. This has a value of `50`.
+
+Following this is rendering of the central planet:
+```javascript
+push();
+specularMaterial(red,green,blue);
+if (Creation.renderer == undefined){
+  sphere(100, 100, 100);
+}
+else{
+  Creation.renderer.sphere(100,100,100);
+}
+translate(0,0,0);
+pop();
+```
+
+The `push()` and `pop()` create an isolated section of code where a new drawing method is initiated and then afterwards returns to the original drawing state. This means that it can change the materials of objects without changing the default/global settings.  Within this section there is the creation of a `specularMaterial` with `red`, `blue` and `green` as the parameters. This is creating a material that will reflect light with the given colour defined by the RGB values. This material is for the central planet. The if statement is again checking whether to use the `p5.renderer` or not and if it is then it will use `Creation.renderer.sphere` which is creating a sphere on the `renderer` instead of on the 3D canvas (which is in the `else` statement). This sphere is made with parameters `100,100,100` which means radius 100 and detail in X and Y of 100. The final `translate` statement means that it will move this sphere to the centre of the canvas which is what we want. The `pop()` returns to the original drawing style.
+
+The camera movements are defined next:
+```javascript
+if (Creation.renderer == undefined){
+  camera(500*sin(PI*rotation/180),0,500*cos(PI*rotation/180),0,0,0,1,1,0);
+}
+```
+
+This is contained within another `if` statement to check for the optional `p5.renderer` and if it is `undefined` then it will move the camera around the canvas using a `sine` and `cosine` calculation to give the effect of orbiting the planet. This multiplies `500` (the size of the canvas) by the `sine`/`cosine` of `PI*rotation/180` which just converts it into radians from degrees. These change the `X` and the `Z` location of the camera as this gave the best results. The other 6 parameters are the centre of the camer in the `X`, `Y` and `Z` planes and the 'up' direction of the camera in `X`, `Y` and `Z` respectively. It is only implemented if not using the `p5.renderer` as it would move the camera around the 3D space when using that too which is not the desired result.
