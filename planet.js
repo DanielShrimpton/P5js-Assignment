@@ -9,6 +9,7 @@ class Creation{
     planet1.r = 35; // Setting the radius to 35
     Creation.planets.push(planet1); // Adding it to the list of planets
     createCanvas(500, 500, WEBGL); // Creates a 3D canvase of size 500x500 using p5.rendererGL
+    frameRate(60);
   }
 
   draw() {
@@ -98,8 +99,7 @@ class Creation{
 }
 
 class Planet{ // This class is called to create a new orbiting planet
-  constructor(x,y,r,s) { // This is the constructor so what is done automatically
-    this.r = r/2; // This sets the radius value to be halved as it is given as a diameter
+  constructor(x,y,r,s) { // Constructor needed to use the variables this.x, this.y, this.r, this.s
     }
   setCoords(millis, rOrbit) { // This function is what is called for every planet on every draw call
     this.x = sin(millis * this.s) * rOrbit/2; // Sets the x coordinates for the planet by using a sine function
