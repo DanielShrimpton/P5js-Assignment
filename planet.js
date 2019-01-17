@@ -110,7 +110,7 @@ class Planet{ // This class is called to create a new orbiting planet
     specularMaterial(255-red,255-green,255-blue); // Setting a material that is different to other two whilst still using the sliders
     translate(this.x, this.y, 0); // This moves the sphere in 3D space by using the previously calculated x and y coordinates
     if (Creation.renderer == undefined){
-      sphere(this.r/3, 100, 100); // Creates a sphere of radius this.r/3 so it is the right size on screen and of quality 100 in x and y.
+      sphere(this.r/3, 100, 100); // Creates a sphere of radius this.r/3 so it is the right size on screen and of detail 100 in x and y.
     }
     else{
       Creation.renderer.sphere(this.r/3, 100, 100);
