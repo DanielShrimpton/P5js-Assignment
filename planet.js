@@ -63,25 +63,31 @@ class Creation{
       Creation.planets[i].setCoords(millis(), Orbit); // and then calls setCoords to move it
       Creation.planets[i].display(red,green,blue); // and then displays them with the colour
     }
-    Ring(Orbit,red,green,blue); // This is calling the function below with the variables
+    this.Ring(Orbit,red,green,blue); // This is calling the function below with the variables
 
-    function Ring(r,red,green,blue){ // This function draws the orbital ring
-      push(); // Start new drawing state
-      specularMaterial(255-red,green,255-blue); // Setting up the material of the torus to be different to the planet
-      if (Creation.renderer == undefined){
-        torus(r/2,5,100,100); // Torus where the parameters are radius, thickness, detail-in-x and detail-in-y
-      }
-      else{
-        Creation.renderer.torus(r/2,5,100,100);
-      }
-      pop(); // Return to original drawing state
-    }
     if (Creation.renderer){
       rotateX(frameCount * 0.01);
       rotateY(frameCount * 0.02);
       texture(Creation.renderer);
-      box(200,200);
+      box(250,250);
     }
+  }
+
+  Ring(r,red,green,blue,t){ // This function draws the orbital ring
+    this.t = t || 5; // Setting this.t to t or if not given then to 5
+    this.r = r || 250; // Addressing local variable with default
+    this.red = red || 255; // Addressing local var with default if none given
+    this.green = green || 255; // Addressing local var with default if none given
+    this.blue = blue || 255; // Addressing local var with default if none given
+    push(); // Start new drawing state
+    specularMaterial(255-this.red,this.green,255-this.blue); // Setting up the material of the torus to be different to the planet
+    if (Creation.renderer == undefined){
+      torus(this.r/2,this.t,100,100); // Torus where the parameters are radius, thickness, detail-in-x and detail-in-y
+    }
+    else{
+      Creation.renderer.torus(this.rr/2,this.t,100,100);
+    }
+    pop(); // Return to original drawing state
   }
 
   spawn() { // This function is called when an event happens in the index.js e.g. mousepressed, it spawns a new planet
@@ -106,6 +112,9 @@ class Planet{ // This class is called to create a new orbiting planet
     this.y = cos(millis * this.s) * rOrbit/2; // Sets the y coordinates for the planet by using a cosine function
   }
   display(red,green,blue) { // This is the function that makes the planets appear in the new positions
+    this.red = red || 0; // Declaring local var and assigning default if none passed
+    this.green = green || 255; // Declaring local var and assigning default if none passed
+    this.blue = blue || 255; // Declaring local var and assigning default if none passed
     push(); // Start new drawing state
     specularMaterial(255-red,255-green,255-blue); // Setting a material that is different to other two whilst still using the sliders
     translate(this.x, this.y, 0); // This moves the sphere in 3D space by using the previously calculated x and y coordinates
