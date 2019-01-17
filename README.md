@@ -200,4 +200,59 @@ else{
 pop();
 ```
 
-The next part is creating the smaller planets. It uses another `pop()` `push()` section to define new drawing method for this section. It sets up a `specularMaterial` using `255-` the local variabels. This means that it will again be a different colour to the other two `specularMaterial`s used previously. It then uses the `translate` to move them in the X and Y planes by the previously calculated `this.x` and `this.y` respectively. There is a final if statement to check for the use of the optinal `p5.renderer` and again if it is used it will draw it to `Creation.renderer` instead of the 3D canvas. Finally `pop()` to end the new drawing method. 
+The next part is creating the smaller planets. It uses another `pop()` `push()` section to define new drawing method for this section. It sets up a `specularMaterial` using `255-` the local variabels. This means that it will again be a different colour to the other two `specularMaterial`s used previously. It then uses the `translate` to move them in the X and Y planes by the previously calculated `this.x` and `this.y` respectively. There is a final if statement to check for the use of the optinal `p5.renderer` and again if it is used it will draw it to `Creation.renderer` instead of the 3D canvas. Finally `pop()` to end the new drawing method.
+
+## index.js
+This is an example file of how you can implement the `planet.js` in a script that is accessed from an HTML file. There are four functions in this example to demonstrate an example of how it can be used.
+
+To begin with, there are two variables that are created: `x` and `g`:
+
+```javascript
+var x;
+var g;
+```
+**function setup()**
+
+This is the setup function that is called once when the script is initialised. In this function there are two things that happen: setting `g` to the value of a checkbox in the HTML file and also making `x` be a new `Creation` with parameter `g`. `g` needs to be a boolean value if the `p5.renderer` wants to be used.
+
+```javascript
+function setup(){
+  g = document.getElementById("use_p5").checked;
+  x = new Creation(g);
+}
+```
+
+**function draw(g)**
+
+This is the function that is called every frame refresh. The code in it updates the value of `g` and then calls `x.draw(g)` passing through whether the `p5.renderer` is wanting to be used to the `draw()` function in `planet.js` in the class `Creation`.
+
+```javascript
+function draw(g){
+  g = document.getElementById("use_p5").checked;
+  x.draw(g);
+}
+```
+
+**function mousePressed()**
+
+This is a built in function that is triggered on the register of a mouse button being pressed.
+
+```javascript
+function mousePressed(){
+  x.spawn();
+}
+```
+
+All it does is call `x.spawn()` which is the function that creates a new planet in the class `Creation` from `planet.js`.
+
+**function keyPressed()**
+
+This is another built in function that is triggered on the register of any key press.
+
+```javascript
+function keyPressed() {
+  x.despawn();
+}
+```
+
+This calls `x.despawn()` which is the function in the class `Creation` from `planet.js` which clears the list of planets, removing them all from being rendererd. 
