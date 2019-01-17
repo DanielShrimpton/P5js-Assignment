@@ -43,4 +43,23 @@ Going through this line by line, `Creation.USE_P5` is being set to the value of 
 
 The variables `locX` and `locY` are set by using the `mouseX` and `mouseY` features of `p5.js` respectively. They then take away the width/height divided by 2 so that they are where the mouse is on screen. This means that these values can then be used to make an object follow the mouse on the canvas.
 
-The variables `red`, `green` and `blue` also uses the `document.getElementById` to retrieve the values from three different sliders with the ID the same as the name as the variable. 
+The variables `red`, `green` and `blue` also uses the `document.getElementById` to retrieve the values from three different sliders with the ID the same as the name as the variable. These values are used to set the colours of the various objects generated within in the component.
+
+The variables `rotation`, `Orbit` and `multiplier` are again obtained from using the `document.getElementById` method. `rotation` is used to rotate the camera around the scene later on in `draw()`. `Orbit` is used for the radius of the orbital ring and to calculate the path of the smaller planets that orbit around the larger planet. `multiplier` is used to multiply `planet.c` to set `planet.s` to a new speed controlled by the slider.
+
+The next part of `draw()` is another if statement:
+```javascript
+if (Creation.renderer == undefined){
+  background(233);
+  pointLight(250,250,250, locX, locY, 600);
+  ambientLight(50);
+}
+else{
+  background(0);
+  Creation.renderer.background(233);
+  Creation.renderer.pointLight(250,250,250,locX,locY,50);
+  Creation.renderer.ambientLight(50);
+}
+```
+
+This is used to check if `Creation.renderer` is `undefined` and if it is then it will draw a `background` of colour `233` on a scale of `0-255`, where `0` is black and `255` is white. It then creates a `pointLight` with the RGB values of `250` and at the XY coordinates of the mouse and Z coordinate of `600`. This means that the point light will follow the mouse in 2D space on the 3D canvas and stay in the same Z plane. It then creates an `ambientLight` which is general light in the scene so things aren't in complete darkness. This has a value of `50`.
